@@ -1,1 +1,3 @@
-# Code-Snippits
+# Sean Sosik-Hamor's Snippets Collection
+
+GNU GPLv3 code snippets that Sean has created over the years...
