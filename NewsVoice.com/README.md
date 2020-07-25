@@ -1,3 +1,3 @@
-# Sean Sosik-Hamor's Snippets for NewsVoice.com
+# Sean Sosik-Hamor's Snippets for Newsvoice.com
 
-These snippets assist with submitting summaries to NewsVoice.com.
+These snippets assist with submitting summaries to Newsvoice.com.
