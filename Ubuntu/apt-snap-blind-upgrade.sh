@@ -1,30 +1,45 @@
 #!/bin/sh
 #
+# Copyright (c) 2020 Sean Sosik-Hamor <sean@hamor.com>
+#
+# You should have received a copy of the GPLv3 LICENSE along with
+# this file. If not, see <http://www.gnu.org/licenses/>.
+#
+# Usage
+#
 # Do not run this on production servers unless you can afford downtime.
 # This script may blindly restart critical services such as Apache.
 #
 # This script was originally created for friends and family whose /boot
-# partitions would fill to capacity due to too many concurrently installed
+# partitions fill to capacity due to too many concurrently installed
 # kernels.
 
 # Update the apt repositories then blindly autoremove all
-apt update
-
-# Remove all cached uninstalled package files.
-apt autoclean
+sudo apt update
 
 # Blindly remove packages that were automatically installed to satisfy
-# dependencies but are no longer needed. Blindly full-upgrade all packages
-# then autoremove again. This was to make sure that there was always enough
-# free space on the /boot partition and to prevent upgrade failures.
-apt -y autoremove
-apt -y full-upgrade
-apt -y autoremove
+# dependencies but are no longer needed.
+sudo apt -y autoremove
 
-# Refresh all snaps. Run twice because sometimes the first run doesn't fully
-# update the snap.
-snap refresh
-snap refresh
+# Blindly full-upgrade all packages.
+sudo apt -y full-upgrade
+
+# Run autoremove again, as newly-installed kernels may mark additional
+# old kernels for removal.
+sudo apt -y autoremove
+
+# Remove all cached or old uninstalled package files.
+sudo apt autoclean
+sudo apt clean
+
+# Refresh all snaps. Run twice because some snaps require multpiple
+# refreshes to update the snap.
+if [ -x /usr/bin/snap ]; then
+    sudo snap refresh
+    sudo snap refresh
+fi
 
 # Display canonical-livepatch status to view currently-deployed fixes.
-/snap/bin/canonical-livepatch status --verbose
+if [ -x /snap/bin/canonical-livepatch ]; then
+    sudo /snap/bin/canonical-livepatch status --verbose
+fi
