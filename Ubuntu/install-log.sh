@@ -2,7 +2,7 @@
 #
 # TODO: Check for symlink attack.
 
-APTLOG=$HOME/Documents/install-apt-log
+APTLOG=$HOME/Documents/install-apt.log
 SNAPLOG=$HOME/Documents/install-snap.log
 LOGTMP=$(mktemp)
 
