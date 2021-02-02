@@ -14,7 +14,7 @@
 # partitions fill to capacity due to too many concurrently installed
 # kernels.
 
-# Update the apt repositories then blindly autoremove all
+# Update the apt repositories.
 sudo apt update
 
 # Blindly remove packages that were automatically installed to satisfy
