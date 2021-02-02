@@ -9,7 +9,7 @@ LOGTMP=$(mktemp)
 touch $APTLOG $SNAPLOG
 
 sort -u $APTLOG > $LOGTMP
-cat $HOME/.bash_history | grep "apt install" | grep -v grep | awk '{print $4}' | sort -u >> $LOGTMP
+cat $HOME/.bash_history | grep "apt install" | grep -v grep | awk '{for(i=4;i<=NF;i++) printf $i; print ""}' | sort -bu >> $LOGTMP
 sort -u $LOGTMP > $APTLOG
 
 sort -u $SNAPLOG > $LOGTMP
