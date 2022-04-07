@@ -1,3 +1,5 @@
 #!/bin/sh
 
-date +"%Y-%m-%dT%H:%M:%S+00:00"
+TZ="-04:00"
+
+date +"%Y-%m-%dT%H:%M:%S${TZ}"
