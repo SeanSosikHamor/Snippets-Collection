@@ -1,4 +1,5 @@
 #!/bin/sh
 
-sudo gem cleanup
-sudo gem update
+gem cleanup
+gem update --system
+gem update --user-install
