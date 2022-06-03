@@ -9,6 +9,7 @@ sudo apt install \
     apt-transport-https \
     curl \
     htop \
+    net-tools \
     vim-scripts
 
 if [ $DISPLAY ]; then
