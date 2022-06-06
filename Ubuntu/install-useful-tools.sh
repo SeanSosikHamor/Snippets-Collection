@@ -5,12 +5,15 @@
 echo "Password is required to run apt install. Be sure to read this script first."
 
 sudo apt update
-sudo apt install \
+sudo apt -y autoremove
+sudo apt -y full-upgrade
+sudo apt -y install \
     apt-transport-https \
     curl \
     htop \
     net-tools \
     vim-scripts
+sudo apt -y autoremove
 
 if [ $DISPLAY ]; then
     echo "Password may be required to run snap install..."
