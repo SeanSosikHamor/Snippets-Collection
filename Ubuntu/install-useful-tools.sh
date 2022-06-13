@@ -9,7 +9,10 @@ sudo apt -y autoremove
 sudo apt -y full-upgrade
 sudo apt -y install \
     apt-transport-https \
+    build-essential \
     curl \
+    file \
+    git \
     htop \
     net-tools \
     vim-scripts
