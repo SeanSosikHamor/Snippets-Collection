@@ -1,4 +1,7 @@
 #!/bin/sh
 
-pip freeze | sed s/==/\>=/ > /tmp/requirements.txt
-pip install -r /tmp/requirements.txt --upgrade
+TMPFILE=$(mktemp)
+
+echo "Saved pip requirements to: ${TMPFILE}"
+pip freeze | sed s/==/\>=/ > ${TMPFILE}
+pip install -r ${TMPFILE} --upgrade
